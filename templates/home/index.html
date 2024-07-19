@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href='{% static "style.css" %}'>
+</head>
+<body>
+
+    <header>
+        <nav>
+            
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>&bull; {{ message }}</p>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div id="left-nav">
+                <h1>PassManager</h1>
+            </div>
+            <div id="right-nav">
+                {% if request.user.is_authenticated %}
+                <button id="add-pass">Add Information</button>
+                <button id="get-pass">Unlock passwords</button>
+                <p>WELCOME, <span>{{request.user}}</span></p>
+                {% else %}
+                {% comment %} <a href="{% url 'login-page' %}" type="button"  ></a> {% endcomment %}
+                <a id="login" type="button">Login</a>
+                <a id="signup" type="button">Sign up</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    <main>
+
+
+
+            <div id="pin-model">
+                <form action="get" method="post">
+                    {% csrf_token %}
+                    <div class="close">
+                        <i class="ri-close-line"></i>
+                    </div>  
+                    <div class="get-divs">
+                        <label for="confpin">Enter the pin</label>
+                        <input type="text" name="confpin" id="confpin">
+                    </div>
+                    <button type="submit" id="get-btn">Add</button>
+                </form>
+            </div>
+
+            <div id="add-model">
+                <form action="add" method="post">
+                    {% csrf_token %}
+                    <div class="close">
+                        <i class="ri-close-line"></i>
+                    </div>  
+                    <div class="divs-add">
+                            <label for="email-inp">Email or Username</label>
+                            <input type="text" name="email-inp" id="email-inp" required>
+                    </div>
+                    <div class="divs-add">
+                            <label for="password-inp">password</label>
+                            <input type="password" name="password-inp" id="password-inp" required>
+                    </div>
+                    <div class="divs-add">
+                            <label for="web">website link</label>
+                            <input type="url" name="web-inp" id="web-inp" required>
+                    </div>
+                    <button type="submit" id="add-btn">Add</button>
+                </form>
+            </div>
+
+            <div id="signup-model">
+                <form action="/" method="post">
+                    {% csrf_token %}
+                    <div class="close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                    <div class="divs">
+                        <div class="name-div">
+                            <label for="fname">First Name</label>
+                            <input type="text" name="fname" id="fname" required>
+                        </div>
+                        <div class="name-div">
+                            <label for="lname">Last Name</label>
+                            <input type="text" name="lname" id="lname" required>
+                        </div>
+                    </div>
+                    <div class="divs">
+                        <div class="pass-div">
+                            <label for="password">Create Password</label>
+                            <input type="password" name="password" id="password" required>
+                        </div>
+                    </div>
+                    <div class="divs">
+                        <div class="pass-div">
+                            <label for="passwordcon">Confirm Password</label>
+                            <input type="password" name="passwordcon" id="passwordcon" required>
+                        </div>
+                    </div>
+                    <div class="divs">
+                        <div class="pass-div">
+                            <label for="pin">Permanent Pin(4 digit)</label>
+                            <input type="number" name="pin" id="pin" required>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit">Create account</button>
+                </form>
+            </div>
+
+            <div id="login-model">
+                <form action="/loign" method="post">
+                    {% csrf_token %}
+                    <div class="close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                    <div class="divs">
+                        <div class="pass-div">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username">
+                        </div>
+                    </div>
+                    <div class="divs">
+                        <div class="pass-div">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                    </div>
+                    <button type="submit" id="submit">login</button>
+                </form>
+            </div>
+ 
+
+            <div id="page1">
+                {% for manage in allManages %}
+                <div class="manage">
+                    <div class="top-manage">
+                        <h2>Username&nbsp;<i class="ri-user-fill"></i>: <span class="black">{{manage.email_or_username}}</span> </h2>
+                        <h2 >website url&nbsp;<i class="ri-global-line"></i>: <span id="website"> <a target="_blank" href="{{manage.website}}">{{manage.website}}</a></span></h2>
+                    </div>
+                    <h4 class="change">Password &nbsp;<i class="ri-key-2-fill"></i>: <span class="black" > <i class="ri-lock-password-fill"></i></span></h4>
+                    <h4 class="hid">Password &nbsp;<i class="ri-key-2-fill"></i>: <span class="black">{{manage.password}}</span></h4>
+                    <button class="copy-button" onclick="copyToClipboard('{{ manage.password }}')">Copy Password</button>
+                    {% for pin in allpins %}
+                        <input type="hidden" name="hidpin" id="hidpin" value="{{pin.pin}}">
+                        {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+    </main>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

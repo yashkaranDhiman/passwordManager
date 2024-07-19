@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Habibi&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins';
+}
+@font-face {
+    font-family: 'heading';
+    src: url('./fonts/MAHENA.ttf');
+}
+body{
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.877);
+}
+main{
+    position: relative;
+}
+h1{
+    font-size: 2.5vw;
+    font-family: 'heading';
+    font-weight: 300;
+}
+nav{
+    display: flex;
+    transition: all .3s ease-out;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 2vw;
+    background-color: #32de84;
+    position: relative;
+}
+#right-nav{
+    display: flex;
+    gap: 2vw;
+    flex-direction: row;
+    align-items: center;
+}
+#right-nav p span{
+    font-family: 'heading';
+    font-size: 1.5vw;
+}
+#add-pass,#get-pass{
+    font-size: 1vw;
+    padding: 10px 14px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(120, 0, 142);
+}
+nav a {
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.4vw;
+    cursor: pointer;
+}
+#login{
+    background-color: #800080;
+}
+#signup{
+    background-color: #800080;
+}
+#page1{
+    width: 100vw;
+    min-height: 90vh;
+    transition: all .3s ease-out;
+    background-color: #0044ff1d;
+    position: relative;
+}
+#page1 .manage{
+    border: 1px solid #dadada;
+    padding: 2vw 3vw;
+    margin-bottom: 1vw;
+    background-color: rgb(247, 247, 247);
+    width: 70%;
+    position: relative;
+    margin-left: 7vw;
+}
+.top-manage{
+    display: flex;
+    gap: 5vw;
+    margin-bottom: 1vw;
+    width: 100%;
+}
+.top-manage h2{
+    font-size: 1.4vw;
+    font-weight: 400;
+}
+.manage h4{
+    font-size: 1.4vw;
+    font-weight: 400;
+}
+i{
+    font-size: 2vw;
+}
+#website{
+    color: blue;
+    text-decoration: underline;
+}
+.manage h2,h4{
+    color: #000000b0;
+}
+.black{
+    font-weight: 500;
+    color: black;
+}
+.pass-open{
+    background-color: violet;
+    cursor: pointer;
+}
+#signup-model{
+    width: 50%;
+    height: 30vw;
+    background-color: #e9e9e9;
+    top: -765px;
+    z-index: 99;
+    padding-top: 3vw;
+    border-radius: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #dadada;
+    position: absolute;
+    transition: all .3s ease-out;
+}
+
+.divs{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-div,.pass-div{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    font-size: 1.4vw;
+}
+input{
+    font-size: 1vw;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: .1px solid black;
+}
+form{
+    padding: 2vw 3vw;
+}
+.pass-div input{
+    width: 100%;
+}
+#submit{
+    font-size: 1.2vw;
+    margin-top: 1vw;
+    background-color: #800080;
+    color: white;
+    border-radius: 12px;
+    border: 1px solid #dadada;
+    padding: 12px 14px;
+    cursor: pointer;
+}
+.blur{
+    filter: blur(10px);
+}
+.close{
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+#login-model{
+    width: 50%;
+    height: 20vw;
+    background-color: #e9e9e9;
+    top: -765px;
+    z-index: 99;
+    padding-top: 3vw;
+    border-radius: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #dadada;
+    position: absolute;
+    transition: all .3s ease-out;
+}
+#add-model form{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    position: absolute;
+    border-radius: 20px;
+    background-color: #e9e9e9;
+    transition: all .3s ease-out;
+    left: 50%;
+    top: -765px;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+}
+
+.divs-add{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1vw;
+}
+.divs-add input{
+    width: 80%;
+    text-align: center;
+}
+#add-btn{
+    font-size: 1.2vw;
+    margin-top: 1vw;
+    background-color: #800080;
+    color: white;
+    width: 20%;
+    margin: auto;
+    border-radius: 12px;
+    border: 1px solid #222222;
+    padding: 12px 14px;
+    cursor: pointer;
+}
+.get-divs{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+.get-divs input{
+    width: 60%;
+}
+#pin-model form{
+    width: 40%;
+    height: 12.5vw;
+    background-color: #e9e9e9;
+    z-index: 99;
+    padding-top: 3vw;
+    border-radius: 20px;
+    left: 50%;
+    top: -765px;
+    transform: translateX(-50%);
+    border: 2px solid #dadada;
+    position: absolute;
+    transition: all .3s ease-out;
+}
+.hid{
+    display: none;
+}
+#get-btn{
+    font-size: 1.2vw;
+    margin-top: 1vw;
+    background-color: #800080;
+    color: white;
+    width: 20%;
+    margin: auto;
+    border-radius: 12px;
+    border: 1px solid #222222;
+    margin-top: 2vw;
+    padding: 12px 14px;
+    cursor: pointer;
+}
+.messages{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    border: 2px solid #dadada;
+    border-radius: 8px; 
+}
+.success{
+    border-radius: 8px;
+    font-size: 1.4vw;
+    padding: 10px 14px;
+    background-color: rgb(0, 210, 0);
+}
+.danger{
+    border-radius: 8px;
+    font-size: 1.4vw;
+    padding: 10px 14px;
+    background-color: rgb(255, 99, 99);
+}
+.info{
+    border-radius: 8px;
+    font-size: 1.4vw;
+    padding: 10px 14px;
+    background-color: rgb(93, 152, 255);
+}
+.copy-button{
+    background-color: #dadada;
+    font-size: 1vw;
+    transition: all ease 0.3s;
+    display: none;
+    position: absolute;
+    right: 0;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    border-end-start-radius: 8px;
+    cursor: pointer;
+    top: 0;
+}
+@media screen and (max-width:800px) {
+    #add-pass,#get-pass{
+        font-size: 1.2vw;
+        padding: 8px 10px;
+    }
+    #right-nav p span{
+        font-size: 2vw;
+    }
+    #get-btn,#add-btn{
+        padding: 8px 10px;
+        font-size: 2vw;
+    }
+    #confpin{
+        font-size: 1.4vw;
+    }
+    .get-divs label{
+        font-size: 2vw;
+    }
+    .divs-add label{
+        font-size: 2vw;
+    }
+    .divs-add input{
+        font-size: 1.6vw;
+    }
+    #pin-model form{
+        height: 15vw;
+    }
+    #right-nav a{
+        font-size: 2vw;
+    }
+    #signup-model{
+        height: 45vw;
+        width: 70%;
+    }
+    #signup-model label{
+        font-size: 1.8vw;
+    }
+    #signup-model input{
+        font-size: 1.5vw;
+    }
+    #signup-model button{
+        font-size: 2vw;
+    }
+    .name-div,.divs{
+        margin-bottom: 1vw;
+    }
+    #login-model{
+        height: 30vw;
+    }
+    .pass-div label{
+        font-size: 2.5vw;
+    }
+    .pass-div input{
+        font-size: 1.5vw;
+    }
+    #login-model button{
+        font-size: 2vw;
+    }
+
+}
+@media screen and (max-width:600px) {
+    #add-pass,#get-pass{
+        font-size: 1.8vw;
+        padding: 8px 10px;
+    }
+    #right-nav p{
+        font-size: 2vw;
+    }
+    #page1 .manage{
+        width: 80%; 
+    }
+    h1{
+        font-size: 3vw;
+    }
+    .top-manage h2{
+        font-size: 2.5vw;
+    }
+    .manage h4{
+        font-size: 2.5vw;
+    }
+    i{
+        font-size: 2.5vw;
+    }
+    .top-manage{
+        gap: 4vw;
+    }
+    .close{
+        top: 2%;
+        right: 2%;
+    }
+    .get-divs label{
+        font-size: 3vw;
+        margin: auto;
+    }
+    .divs-add label{
+        font-size: 3vw;
+    }
+    .divs-add input,#confpin{
+        font-size: 2.5vw;
+    }
+    #confpin{
+        margin: auto;
+    }
+    #pin-model form{
+        height: 22vw;
+    }
+    #get-btn,#add-btn{
+        padding: 8px 12px;
+        font-size: 2vw;
+        display: flex;
+        justify-content: center;
+    }   
+    #login-model{
+        height: 35vw;
+    }
+    #signup-model{
+        height: 58vw;
+        width: 90%;
+    }
+    #signup-model label{
+        font-size: 2.5vw;
+    }
+    #signup-model input{
+        font-size: 2vw;
+    }
+}
+@media screen and (max-width:400px) {
+    #right-nav p{
+        display: none;
+    }
+    h1{
+        font-size: 4vw;
+    }
+    #add-pass,#get-pass{
+        font-size: 2.4vw;
+        padding: 8px 8px;
+        border-radius: 10px;
+    }
+    .top-manage h2{
+        font-size: 3vw;
+    }
+    .manage h4{
+        font-size: 3vw;
+    }
+    i{
+        font-size: 3vw;
+
+    }
+    #page1 .manage{
+        padding: 2vw 3vw;
+        width: 95%;
+        margin-left: 0vw;
+    }
+    .top-manage{
+        gap: 4vw;
+    }
+    #right-nav a{
+        font-size: 2.5vw;
+    }
+    #login-model{
+        height: 40vw;
+        width: 80%;
+    }
+    .pass-div label{
+        font-size: 3vw;
+    }
+    .pass-div input{
+        font-size: 2.5vw;
+    }
+    #signup-model{
+        height: 90vw;
+        width: 90%;
+    }
+    #signup-model label{
+        font-size: 3.5vw;
+    }
+    #signup-model input{
+        font-size: 3vw;
+        width: 90%;
+    }
+    #signup-model button{
+        font-size: 2.5vw;
+    }
+    .divs{
+        flex-direction: column;
+    }
+}
